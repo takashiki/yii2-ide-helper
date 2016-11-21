@@ -1,0 +1,25 @@
+{
+    "name": "mis/yii2-ide-helper",
+    "description": "Yii2 IDE Helper, generates correct PHPDocs for all components, to improve auto-completion.",
+    "keywords": ["yii2", "autocomplete", "ide", "helper", "phpstorm", "netbeans", "sublime", "codeintel", "phpdoc"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "takashiki",
+            "email": "857995137@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mis\\IdeHelper\\": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
