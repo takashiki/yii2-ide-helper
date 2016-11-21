@@ -25,7 +25,7 @@ After updating composer, add the component to the `components` array and `bootst
 ...
 'components' => [
     'ideHelper' => [
-      	'class' => \Mis\IdeHelper\IdeHelper::class,
+      	'class' => 'Mis\IdeHelper\IdeHelper',
     ],
   ...
 ],
@@ -41,7 +41,7 @@ php yii ide-helper:generate
 
 ```php
 'ideHelper' => [
-    'class' => \Mis\IdeHelper\IdeHelper::class,
+    'class' => 'Mis\IdeHelper\IdeHelper',
     'filename' => '_ide_helper',
     'format' => 'php',
     'rootDir' => dirname(__DIR__),
