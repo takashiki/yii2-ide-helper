@@ -34,7 +34,7 @@ After updating composer, add the component to the `components` array and `bootst
 Now you can generate ide helper file by command:
 
 ```
-php yii ide-helper:generate
+php yii ide-helper/generate
 ```
 
 ### Options
@@ -56,6 +56,7 @@ Default config files:
 
 ```php
 protected $defaultConfigFiles = [
+    'config/web.php',
     'config/main.php',
     'config/main-local.php',
     'common/config/main.php',

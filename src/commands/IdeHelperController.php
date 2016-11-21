@@ -2,6 +2,7 @@
 /**
  * Command for manage ide helper component for Yii framework 2.x.x version.
  */
+
 namespace Mis\IdeHelper\commands;
 
 use Yii;

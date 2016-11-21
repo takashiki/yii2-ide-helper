@@ -8,10 +8,10 @@
 namespace Mis\IdeHelper;
 
 use Mis\IdeHelper\commands\IdeHelperController;
+use Yii;
 use yii\base\Component;
 use yii\console\Application;
 use yii\helpers\ArrayHelper;
-use Yii;
 
 class IdeHelper extends Component
 {
@@ -24,6 +24,7 @@ class IdeHelper extends Component
     public $configFiles = [];
 
     protected $defaultConfigFiles = [
+        'config/web.php',
         'config/main.php',
         'config/main-local.php',
         'common/config/main.php',
@@ -35,11 +36,11 @@ class IdeHelper extends Component
     ];
 
     /**
-     * init method
+     * init method.
      */
     public function init()
     {
-        if(Yii::$app instanceof Application) {
+        if (Yii::$app instanceof Application) {
             Yii::$app->controllerMap['ide-helper'] = IdeHelperController::class;
         }
     }
@@ -52,7 +53,7 @@ class IdeHelper extends Component
     protected function readConfig()
     {
         $configFiles = array_merge($this->defaultConfigFiles, $this->configFiles);
-        $config = [];
+        $config = ['components' => []];
         $root = $this->getRootDir();
         foreach ($configFiles as $file) {
             if (is_file($root.DIRECTORY_SEPARATOR.$file)) {
@@ -65,7 +66,7 @@ class IdeHelper extends Component
 
     protected function generateFilename()
     {
-        return $this->getRootDir.DIRECTORY_SEPARATOR.$this->filename.'.'.$this->format;
+        return $this->getRootDir().DIRECTORY_SEPARATOR.$this->filename.'.'.$this->format;
     }
 
     public function generate()
@@ -74,11 +75,11 @@ class IdeHelper extends Component
         $string = '';
         foreach ($config['components'] as $name => $component) {
             if (isset($component['class'])) {
-                $string .= PHP_EOL . ' * @property ' . $component['class'] . ' $' . $name;
+                $string .= ' * @property '.$component['class'].' $'.$name.PHP_EOL;
             }
         }
 
-        $helper = str_replace('* phpdoc', $string, file_get_contents(__DIR__.'/template.tpl'));
+        $helper = str_replace('* phpdoc'.PHP_EOL, $string, file_get_contents(__DIR__.'/template.tpl'));
 
         file_put_contents($this->generateFilename(), $helper);
     }
