@@ -75,11 +75,11 @@ class IdeHelper extends Component
         $string = '';
         foreach ($config['components'] as $name => $component) {
             if (isset($component['class'])) {
-                $string .= ' * @property '.$component['class'].' $'.$name.PHP_EOL;
+                $string .= ' * @property '.$component['class'].' $'.$name."\n";
             }
         }
 
-        $helper = str_replace('* phpdoc'.PHP_EOL, $string, file_get_contents(__DIR__.'/template.tpl'));
+        $helper = str_replace(' * phpdoc', rtrim($string, "\n"), file_get_contents(__DIR__.'/template.tpl'));
 
         file_put_contents($this->generateFilename(), $helper);
     }
