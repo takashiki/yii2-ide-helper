@@ -56,7 +56,7 @@ class IdeHelper extends Component
         $config = ['components' => []];
         $root = $this->getRootDir();
         foreach ($configFiles as $file) {
-            if (is_file($root.DIRECTORY_SEPARATOR.$file)) {
+            if (is_file($root . DIRECTORY_SEPARATOR . $file)) {
                 $config = ArrayHelper::merge($config, require($file));
             }
         }
@@ -66,7 +66,7 @@ class IdeHelper extends Component
 
     protected function generateFilename()
     {
-        return $this->getRootDir().DIRECTORY_SEPARATOR.$this->filename.'.'.$this->format;
+        return $this->getRootDir() . DIRECTORY_SEPARATOR . $this->filename . '.' . $this->format;
     }
 
     public function generate()
@@ -75,11 +75,11 @@ class IdeHelper extends Component
         $string = '';
         foreach ($config['components'] as $name => $component) {
             if (isset($component['class'])) {
-                $string .= ' * @property '.$component['class'].' $'.$name."\n";
+                $string .= ' * @property ' . $component['class'] . ' $' . $name . "\n";
             }
         }
 
-        $helper = str_replace(' * phpdoc', rtrim($string, "\n"), file_get_contents(__DIR__.'/template.tpl'));
+        $helper = str_replace(' * phpdoc', rtrim($string, "\n"), file_get_contents(__DIR__ . '/template.tpl'));
 
         file_put_contents($this->generateFilename(), $helper);
     }

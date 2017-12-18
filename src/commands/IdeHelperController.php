@@ -15,8 +15,8 @@ class IdeHelperController extends Controller
 
     public function actionGenerate()
     {
-        $this->stdout('Starting generation...'.PHP_EOL, Console::FG_CYAN);
+        $this->stdout('Starting generation...' . PHP_EOL, Console::FG_CYAN);
         Yii::$app->ideHelper->generate();
-        $this->stdout('Done generation...'.PHP_EOL, Console::FG_GREEN);
+        $this->stdout('Done generation...' . PHP_EOL, Console::FG_GREEN);
     }
 }

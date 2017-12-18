@@ -1,6 +1,4 @@
-preset: recommended
-
-risky: false
+preset: psr2
 
 finder:
   exclude:
