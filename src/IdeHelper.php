@@ -57,7 +57,7 @@ class IdeHelper extends Component
         $root = $this->getRootDir();
         foreach ($configFiles as $file) {
             if (is_file($root . DIRECTORY_SEPARATOR . $file)) {
-                $config = ArrayHelper::merge($config, require($file));
+                $config = ArrayHelper::merge($config, require($root . DIRECTORY_SEPARATOR . $file));
             }
         }
 
